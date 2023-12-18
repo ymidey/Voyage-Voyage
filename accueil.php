@@ -21,9 +21,10 @@
 
 
  <div class="billet-list">
-     <h3>Liste de tous les billets :</h3>
+     <h3>Les 3 derniers billets postés sur le forum :</h3>
      <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
             echo "<a href='add-billet.php'>Ajouter un nouveau billet</a>";
+            var_dump($_SESSION);
         } ?>
      <div class="billet-container">
          <?php foreach ($resultRequetBillet as $billet) {
@@ -43,7 +44,7 @@
                             echo "<p>{$billet["pseudo"]} - {$formattedDate}</p>";
                             ?>
                      </div>
-                     <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] = 1) { ?>
+                     <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) { ?>
                          <div class="billet-admin">
                              <a href="traiteBillet.php?requete=delete&idBillet=<?php echo $billet["id_billet"] ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce billet?')">Supprimer le billet</a>
                              <a href="modif-billet.php?idBillet=<?php echo $billet["id_billet"] ?>">Modifier le billet</a>
@@ -53,6 +54,7 @@
              </div>
          <?php } ?>
      </div>
+     <a href="archive.php">Acceder à tout les billets</a>
  </div>
 
  <?php include("footer.php"); ?>
