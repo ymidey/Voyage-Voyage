@@ -9,7 +9,6 @@ $mdp2 = $_GET["password2"];
 
 if ($mdp == $mdp2) {
 
-    // On vérifie si un billet existe déjà
     $checkTitreBilletExiste = "SELECT id FROM utilisateurs WHERE pseudo = :pseudo";
     $checkStmt = $db->prepare($checkTitreBilletExiste);
     $checkStmt->execute(['pseudo' => $pseudo]);

@@ -5,5 +5,7 @@
     <label for="contenu">Entrez le contenu
         <input type="text" name="contenu" id="contenu" required>
     </label>
+    <input type="hidden" name="requete" id="requete" value="insert">
+
     <button type="submit" style="width:30%">Ajout du billet</button>
 </form>
