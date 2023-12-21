@@ -11,18 +11,17 @@ if (isset($_GET['idBillet'])) {
     $billet = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($billet) {
-        // Afficher le formulaire de modification avec les données actuelles
 ?>
-<form action="traiteBillet.php" method="get">
-    <input type="hidden" name="idBillet" value="<?php echo $billet['id_billet']; ?>">
-    <label for="titre">Titre :</label>
-    <input type="text" name="titre" value="<?php echo $billet['titre']; ?>"><br>
-    <label for="contenu">Contenu :</label>
-    <textarea name="contenu"><?php echo $billet['contenu']; ?></textarea><br>
-    <input type="hidden" name="requete" id="requete" value="update">
+        <form action="traitebillet.php" method="get">
+            <input type="hidden" name="idBillet" value="<?php echo $billet['id_billet']; ?>">
+            <label for="titre">Titre :</label>
+            <input type="text" name="titre" value="<?php echo $billet['titre']; ?>"><br>
+            <label for="contenu">Contenu :</label>
+            <textarea name="contenu"><?php echo $billet['contenu']; ?></textarea><br>
+            <input type="hidden" name="requete" id="requete" value="update">
 
-    <input type="submit" value="Modifier">
-</form>
+            <input type="submit" value="Modifier">
+        </form>
 <?php
     } else {
         echo "Billet non trouvé.";

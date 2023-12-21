@@ -1,4 +1,4 @@
-<form action="traiteBillet.php" method="get" style="display:flex; flex-direction:column; align-items:center">
+<form action="traitebillet.php" method="get" style="display:flex; flex-direction:column; align-items:center">
     <label for="titreBillet">Entrez votre titre
         <input type="text" name="titreBillet" id="titreBillet" required>
     </label>

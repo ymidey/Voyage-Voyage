@@ -19,24 +19,35 @@
  <div class="billet-container">
      <?php foreach ($resultRequetBillet as $billet) {
         ?>
+
      <div class="billet">
-         <a href="billet.php?id=<?php echo $billet["id_billet"] ?>" class="billet-link">
+         <a href="billet.php?id_billet=<?php echo $billet["id_billet"] ?>" class="billet-link">
 
              <div class="billet-header">
-                 <h3><?php echo $billet["titre"] ?></h3>
+                 <?php echo "<h3>" . $billet["titre"] . "</h3>" ?>
+                 <?php
+                        $dateObj = new DateTime($billet["date"]);
+                        $formattedDate = $dateObj->format('d M, Y');
+
+                        echo "<p>Publié le {$formattedDate} par {$billet["pseudo"]}</p>";
+                        ?>
              </div>
 
              <div class="billet-content">
                  <?php
-                        $dateObj = new DateTime($billet["date"]);
-                        $formattedDate = $dateObj->format('M d, Y');
+                        $contenuBillet = $billet["contenu"];
 
-                        echo "<p>{$billet["pseudo"]} - {$formattedDate}</p>";
+                        if (strlen($contenuBillet) > 100) {
+                            $contenuTronque = substr($contenuBillet, 0, 100) . '...';
+                            echo "<p>" . $contenuTronque . "</p>";
+                        } else {
+                            echo "<p>" . $contenuBillet . "</p>";
+                        }
                         ?>
              </div>
              <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) { ?>
              <div class="billet-admin">
-                 <a href="traiteBillet.php?requete=delete&idBillet=<?php echo $billet["id_billet"] ?>"
+                 <a href="traitebillet.php?requete=delete&idBillet=<?php echo $billet["id_billet"] ?>"
                      onclick="return confirm('Voulez-vous vraiment supprimer ce billet?')">Supprimer le billet</a>
                  <a href="modif-billet.php?idBillet=<?php echo $billet["id_billet"] ?>">Modifier le billet</a>
              </div>

@@ -5,11 +5,11 @@ if (isset($_GET["requete"])) {
     if (
         $_GET["requete"] == "insert" && isset($_GET['titreBillet']) &&
         isset($_GET['contenu']) &&
-        isset($_SESSION['admin']) &&
         $_SESSION['admin'] == 1
     ) {
         $titre = ($_GET['titreBillet']);
         $contenu = ($_GET['contenu']);
+        $contenu = nl2br($contenu);
         $datePubli = new DateTime('now', new DateTimeZone('Europe/Paris'));
         $idUser = $_SESSION['id_user'];
 
@@ -51,6 +51,8 @@ if (isset($_GET["requete"])) {
         $idBillet = $_GET['idBillet'];
         $nouveauTitre = $_GET['titre'];
         $nouveauContenu = $_GET['contenu'];
+        $nouveauContenu = nl2br($nouveauContenu);
+
 
         // Mettre à jour le billet dans la base de données
         $requeteModifBillet = "UPDATE billets SET titre = :titre, contenu = :contenu WHERE id_billet = :id_billet";
