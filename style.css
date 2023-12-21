@@ -30,7 +30,14 @@ h3, h2, h1 {
     justify-content: flex-start;
     flex-direction: column;
     height: fit-content;
+}
 
+.billet-hover {
+    transition: all .5s ease;
+}
+
+.billet-hover:hover {
+    transform: scale(1.05);
 }
 
 .billet-list>* {
@@ -88,7 +95,7 @@ h3, h2, h1 {
 }
 
 .showBillet {
-    margin: 8rem auto 2rem;
+    margin: 4rem auto 2rem;
     min-height: calc(100vh - 6rem);
     position: relative;
     padding: 0 7%;
@@ -125,4 +132,26 @@ table {
 
 th {
     text-align: start;
+}
+
+form div {
+    display: flex;
+    gap: 15px;
+}
+
+.requete {
+    background: #f1f1f1;
+    width: 60%;
+    padding: 15px;
+    margin: auto;
+}
+
+.requete h1 {
+    text-align: center;
+}
+
+.requete-form {
+    display: flex;
+    flex-direction: column;
+
 }

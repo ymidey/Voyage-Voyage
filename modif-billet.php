@@ -12,16 +12,22 @@ if (isset($_GET['idBillet'])) {
 
     if ($billet) {
 ?>
-        <form action="traitebillet.php" method="get">
-            <input type="hidden" name="idBillet" value="<?php echo $billet['id_billet']; ?>">
-            <label for="titre">Titre :</label>
-            <input type="text" name="titre" value="<?php echo $billet['titre']; ?>"><br>
-            <label for="contenu">Contenu :</label>
-            <textarea name="contenu"><?php echo $billet['contenu']; ?></textarea><br>
-            <input type="hidden" name="requete" id="requete" value="update">
+<div class="requete">
+    <h1 class="titre">Modifier l'article</h1>
+    <form class="requete-form" action="traitebillet.php" method="get">
+        <input type="hidden" name="idBillet" value="<?php echo $billet['id_billet']; ?>">
 
-            <input type="submit" value="Modifier">
-        </form>
+        <label for="titre">Titre</label>
+        <input type="text" name="titre" id="titre" value="<?php echo $billet['titre']; ?>" required><br>
+
+        <label for="contenu">Contenu</label>
+        <textarea name="contenu" id="contenu" rows="5" required><?php echo $billet['contenu']; ?></textarea><br>
+
+        <input type="hidden" name="requete" id="requete" value="update">
+
+        <input type="submit" value="Modifier">
+    </form>
+</div>
 <?php
     } else {
         echo "Billet non trouvé.";

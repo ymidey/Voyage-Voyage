@@ -20,21 +20,21 @@
      <?php foreach ($resultRequetBillet as $billet) {
         ?>
 
-     <div class="billet">
-         <a href="billet.php?id_billet=<?php echo $billet["id_billet"] ?>" class="billet-link">
+         <div class="billet billet-hover">
+             <a href="billet.php?id_billet=<?php echo $billet["id_billet"] ?>" class="billet-link">
 
-             <div class="billet-header">
-                 <?php echo "<h3>" . $billet["titre"] . "</h3>" ?>
-                 <?php
+                 <div class="billet-header">
+                     <?php echo "<h3>" . $billet["titre"] . "</h3>" ?>
+                     <?php
                         $dateObj = new DateTime($billet["date"]);
                         $formattedDate = $dateObj->format('d M, Y');
 
                         echo "<p>Publié le {$formattedDate} par {$billet["pseudo"]}</p>";
                         ?>
-             </div>
+                 </div>
 
-             <div class="billet-content">
-                 <?php
+                 <div class="billet-content">
+                     <?php
                         $contenuBillet = $billet["contenu"];
 
                         if (strlen($contenuBillet) > 100) {
@@ -44,15 +44,14 @@
                             echo "<p>" . $contenuBillet . "</p>";
                         }
                         ?>
-             </div>
-             <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) { ?>
-             <div class="billet-admin">
-                 <a href="traitebillet.php?requete=delete&idBillet=<?php echo $billet["id_billet"] ?>"
-                     onclick="return confirm('Voulez-vous vraiment supprimer ce billet?')">Supprimer le billet</a>
-                 <a href="modif-billet.php?idBillet=<?php echo $billet["id_billet"] ?>">Modifier le billet</a>
-             </div>
-             <?php }; ?>
-         </a>
-     </div>
+                 </div>
+                 <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) { ?>
+                     <div class="billet-admin">
+                         <a href="traitebillet.php?requete=delete&idBillet=<?php echo $billet["id_billet"] ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce billet?')">Supprimer le billet</a>
+                         <a href="modif-billet.php?idBillet=<?php echo $billet["id_billet"] ?>">Modifier le billet</a>
+                     </div>
+                 <?php }; ?>
+             </a>
+         </div>
      <?php } ?>
  </div>

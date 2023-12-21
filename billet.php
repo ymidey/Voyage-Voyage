@@ -75,20 +75,20 @@ $resultCountComment = $prep->fetchall(PDO::FETCH_ASSOC);
         <?php if (isset($_SESSION["id_user"])) { ?>
         <form action="traite-com.php" method="get">
             <div class="form-element">
-                <label for="com">Ajoutez un nouveau commentaire</label>
-                <textarea name="com" id="com" required>
-                    </div>
-                    <input type="hidden" name="id_billet" value="<?php echo $idBillet; ?>">
-                    <input type="hidden" name="requete" id="requete" value="insert">
-                    <input type="submit" value="Poster" id="btn_post_com">
-                </form>
-            <?php } else {
+                <label for="com">Ajoutez un nouveau commentaire : </label>
+                <textarea name="com" id="com" required></textarea>
+            </div>
+            <input type="hidden" name="id_billet" value="<?php echo $idBillet; ?>">
+            <input type="hidden" name="requete" id="requete" value="insert">
+            <input type="submit" value="Poster" id="btn_post_com">
+        </form>
+        <?php } else {
                 echo "<br><div><p>Pour pouvoir ajouter un commentaire, vous devez être connecter</p><a href='login.php'>Me connecter</a></div>";
             } ?>
-        </div>
+    </div>
 
     <?php  } else { ?>
-        <p>Aucun résultat trouvé.</p>
+    <p>Aucun résultat trouvé.</p>
     <?php } ?>
 </div>
 <?php include("footer.php"); ?>

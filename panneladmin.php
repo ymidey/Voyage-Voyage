@@ -7,25 +7,31 @@
 
     ?>
 
- <h1>Pannel admin</h1>
+ <div class="header">
+     <h1 class="titre">Pannel admin</h1>
+     <h2>Liste de tout les utilisateurs inscrit sur le forum : </h2>
+ </div>
+
  <table>
      <thead>
          <tr id="header">
              <th>Login</th>
-
              <th>Pseudo</th>
              <th>Supprimer</th>
          </tr>
      </thead>
      <tbody>
          <?php foreach ($resultShowUtilisateurs as $showUtilisateurs) : ?>
-             <tr>
-                 <td data-title="login"><?php echo $showUtilisateurs["login"] ?></td>
-                 <td data-title="login"><?php echo $showUtilisateurs["pseudo"] ?> </td>
+         <tr>
+             <td data-title="login"><?php echo $showUtilisateurs["login"] ?></td>
+             <td data-title="login"><?php echo $showUtilisateurs["pseudo"] ?> </td>
 
-                 <td data-title="Supprimer"><a href="traiteadmin.php?delete=<?php echo $showUtilisateurs["id"] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette utilisateur')">Supprimer</a>
-                 </td>
-             </tr>
+             <td data-title="Supprimer"><a href="traiteadmin.php?delete=<?php echo $showUtilisateurs["id"] ?>"
+                     onclick="return confirm('Voulez-vous vraiment supprimer cette utilisateur')">Supprimer</a>
+             </td>
+         </tr>
          <?php endforeach; ?>
      </tbody>
  </table>
+
+ <h2>Liste de tout les commentaires sur le forum : </h2>
