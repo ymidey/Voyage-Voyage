@@ -18,7 +18,7 @@
  <div class="billet-list">
      <h3>Les 3 derniers billets postés sur le blog :</h3>
      <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-            echo "<a href='add-billet.php'>Ajouter un nouveau billet</a>";
+            echo "<a href='add-billet.php' style='color:darkblue'>Ajouter un nouveau billet</a>";
         } ?>
      <div class="billet-container">
          <?php foreach ($resultRequetBillet as $billet) {
@@ -27,7 +27,7 @@
                  <a href="billet.php?id_billet=<?php echo $billet["id_billet"] ?>" class="billet-link">
 
                      <div class="billet-header">
-                         <?php echo "<h3>" . $billet["titre"] . "</h3>" ?>
+                         <?php echo "<h4>" . $billet["titre"] . "</h4>" ?>
                          <?php
                             $dateObj = new DateTime($billet["date"]);
                             $formattedDate = $dateObj->format('d M, Y');
@@ -59,7 +59,7 @@
              </div>
          <?php } ?>
      </div>
-     <a href="archive.php">Acceder à tout les billets</a>
+     <a href="archive.php" class="link-button">Acceder à tout les billets</a>
  </div>
 
  <?php include("footer.php"); ?>

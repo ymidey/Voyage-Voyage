@@ -29,6 +29,9 @@ $resultCountComment = $prep->fetchall(PDO::FETCH_ASSOC);
 ?>
 
 <div class="showBillet">
+    <a href="#" class="returnproject" id="retourPagePrecedente"><svg width=" 25px" height="25px" viewBox="0 0 25 25" ">
+            <path d=" M24 12.001H2.914l5.294-5.295-.707-.707L1 12.501l6.5 6.5.707-.707-5.293-5.293H24v-1z"></path>
+        </svg>Retour à la page précédente</a>
     <?php if ($resultRequetBilletUser) { ?>
     <article class="billet">
         <div class="billet-header">
@@ -64,7 +67,7 @@ $resultCountComment = $prep->fetchall(PDO::FETCH_ASSOC);
             </p>
             <?php
                         if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
-                            echo "<a href='traite-com.php?id_billet=" . $idBillet . "&requete=delete&idcom=" . $comment['id_commentaire'] . "'>Supprimer le commentaire</a>";
+                            echo "<a href='./bdd/traite-com.php?id_billet=" . $idBillet . "&requete=delete&idcom=" . $comment['id_commentaire'] . "'>Supprimer le commentaire</a>";
                         } ?>
         </div>
         <?php }
@@ -73,14 +76,12 @@ $resultCountComment = $prep->fetchall(PDO::FETCH_ASSOC);
             } ?>
 
         <?php if (isset($_SESSION["id_user"])) { ?>
-        <form action="traite-com.php" method="get">
-            <div class="form-element">
-                <label for="com">Ajoutez un nouveau commentaire : </label>
-                <textarea name="com" id="com" required></textarea>
-            </div>
+        <form action="traite-com.php" method="get" class="requete form-com">
+            <label for="com">Ajoutez un nouveau commentaire : </label>
+            <textarea name="com" id="com" required></textarea>
             <input type="hidden" name="id_billet" value="<?php echo $idBillet; ?>">
             <input type="hidden" name="requete" id="requete" value="insert">
-            <input type="submit" value="Poster" id="btn_post_com">
+            <button type="submit" id="btn_post_com">Postez</button>
         </form>
         <?php } else {
                 echo "<br><div><p>Pour pouvoir ajouter un commentaire, vous devez être connecter</p><a href='login.php'>Me connecter</a></div>";
@@ -91,4 +92,5 @@ $resultCountComment = $prep->fetchall(PDO::FETCH_ASSOC);
     <p>Aucun résultat trouvé.</p>
     <?php } ?>
 </div>
+
 <?php include("footer.php"); ?>

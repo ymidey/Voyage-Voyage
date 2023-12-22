@@ -13,7 +13,7 @@ if (isset($_GET['idBillet'])) {
     if ($billet) {
 ?>
 <div class="requete">
-    <h1 class="titre">Modifier l'article</h1>
+    <h1 class="titre">Modifier l'article ✏️</h1>
     <form class="requete-form" action="traitebillet.php" method="get">
         <input type="hidden" name="idBillet" value="<?php echo $billet['id_billet']; ?>">
 
@@ -25,7 +25,7 @@ if (isset($_GET['idBillet'])) {
 
         <input type="hidden" name="requete" id="requete" value="update">
 
-        <input type="submit" value="Modifier">
+        <button type="submit">Modifier</button>
     </form>
 </div>
 <?php
