@@ -1,4 +1,9 @@
 <?php
+
+if (isset($_SERVER['HTTP_REFERER'])) {
+    // Récupère l'URL de la page précédente
+    $urlPagePrecedente = $_SERVER['HTTP_REFERER'];
+}
 session_start(); // Assurez-vous d'appeler session_start() au début de chaque script qui utilise des sessions
 
 // Effacer toutes les variables de session
@@ -11,5 +16,5 @@ session_destroy();
 session_unset();
 
 // Redirection vers la page de connexion
-header('Location: accueil.php');
+header("Location:" . $urlPagePrecedente);
 exit();

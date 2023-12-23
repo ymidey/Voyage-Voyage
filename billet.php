@@ -119,7 +119,7 @@ $resultCountComment = $prep->fetchAll(PDO::FETCH_ASSOC);
                         echo "<p>" . $row["commentaire_contenu"] . "</p>";
                     }
 
-                    if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
+                    if ($_SESSION["admin"] == 1) {
                         echo "<a href='traite-com.php?id_billet=" . $idBillet . "&requete=delete&idcom=" . $row['id_commentaire'] . "' onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');\">Supprimer le commentaire</a>";
                     }
 
