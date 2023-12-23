@@ -23,9 +23,16 @@ include("header.php");
         <button type="submit">S'inscrire</button>
         <?php
         if (isset($_GET['erreur'])) {
-            $err = $_GET['erreur'];
 
-            echo "<p style='color:red'>Les mots de passes rentrés ne correspondent pas l'un à l'autre</p>";
+            if (isset($_GET['erreur']) == "mdp") {
+                $err = $_GET['erreur'];
+
+                echo "<p style='color:red'>Les mots de passe que vous rentrés ne correspondent pas l'un à l'autre</p>";
+            } elseif (isset($_GET['erreur']) == "pseudoExiste") {
+                $err = $_GET['erreur'];
+
+                echo "<p style='color:red'>Le pseudo que vous avez choisi existe déjà</p>";
+            }
         }
         ?>
     </form>

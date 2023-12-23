@@ -3,14 +3,13 @@ include("header.php");
 ?>
 
 <div class="requete">
-    <h1 class="titre">Salut, vous etes de retour ! 😄</h1>
+    <h1 class="titre">Se connecter</h1>
     <form action="traitelogin.php" method="get">
-        <legend>Les champs renseignez avec une <span id="red">*</span> sont obligatoires</legend>
 
-        <label for="login">Votre login (adresse mail)<span id="red">*</span></label>
+        <label for="login">Votre login (adresse mail)</label>
         <input type="email" name="login" id="login" required>
 
-        <label for="password">Votre mot de passe<span id="red">*</span></label>
+        <label for="password">Votre mot de passe</label>
         <input type="password" name="password" id="password" required>
 
         <button type="submit">Se connecter</button>

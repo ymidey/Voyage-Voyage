@@ -1,11 +1,14 @@
 <?php
 include("header.php");
 
-if (isset($_GET["requete"])) {
+if (
+    isset($_GET["requete"])
+    &&
+    $_SESSION['admin'] == 1
+) {
     if (
         $_GET["requete"] == "insert" && isset($_GET['titreBillet']) &&
-        isset($_GET['contenu']) &&
-        $_SESSION['admin'] == 1
+        isset($_GET['contenu'])
     ) {
         $titre = ($_GET['titreBillet']);
         $contenu = ($_GET['contenu']);
@@ -46,8 +49,7 @@ if (isset($_GET["requete"])) {
 
         header("Location: accueil.php?validation=delete");
         exit;
-    }
-    if ($_GET["requete"] == "update" && isset($_GET['idBillet'])) {
+    } elseif ($_GET["requete"] == "update" && isset($_GET['idBillet'])) {
         $idBillet = $_GET['idBillet'];
         $nouveauTitre = $_GET['titre'];
         $nouveauContenu = $_GET['contenu'];
@@ -63,5 +65,5 @@ if (isset($_GET["requete"])) {
         exit;
     }
 } else {
-    /*  header("Location: accueil.php"); */
+    header("Location: accueil.php");
 }

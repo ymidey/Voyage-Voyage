@@ -24,4 +24,6 @@ if ($_GET["delete"] && $_SESSION['admin'] == 1) {
         header("Location: panneladmin.php");
         exit;
     }
+} else {
+    header("Location: accueil.php");
 }

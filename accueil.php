@@ -12,7 +12,7 @@
 
                 echo "Bonjour {$_SESSION["pseudo"]}, ";
             } ?>
-         bienvenu à toi sur Voyage-Voyage, un blog géré par Yannick Midey</h2>
+         bienvenue à toi sur Voyage-Voyage, un blog géré par Yannick Midey</h2>
  </div>
 
  <div class="billet-list">

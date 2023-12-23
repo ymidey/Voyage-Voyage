@@ -10,16 +10,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    var bouttonPagePrecedente = document.getElementById('retourPagePrecedente')
 
-    bouttonPagePrecedente.addEventListener('click', function () {
-        retourPagePrecedente();
-    })
-    function retourPagePrecedente() {
-        // Récupérer l'URL de la page précédente
-        var pagePrecedente = document.referrer;
-
-        // Rediriger vers la page précédente
-        window.location.href = pagePrecedente;
-    }
 });

@@ -21,4 +21,6 @@ if ($prep->rowCount() == 1) {
     } else {
         header('location: login.php?erreur');
     }
+} else {
+    header('location: login.php?erreur');
 }
