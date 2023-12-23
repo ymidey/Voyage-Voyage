@@ -3,6 +3,7 @@ include("header.php");
 
 $login = $_GET["login"];
 $mdp = $_GET["password"];
+$url = $_GET["urlPrecedente"];
 
 $requeteLogin = "SELECT * FROM utilisateurs WHERE login= :login";
 $prep = $db->prepare($requeteLogin);
@@ -17,7 +18,7 @@ if ($prep->rowCount() == 1) {
         $_SESSION['pseudo'] = $result["pseudo"];
         $_SESSION['id_user'] = $result["id"];
         $_SESSION["admin"] = $result["admin"];
-        header("location: accueil.php");
+        header("location: " . $url);
     } else {
         header('location: login.php?erreur');
     }

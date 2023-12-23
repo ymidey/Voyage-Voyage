@@ -32,6 +32,19 @@ if (isset($_GET['id_billet']) && isset($_SESSION['id_user'])) {
 
         header("Location: billet.php?id_billet=" . $id_billet);
         exit;
+    } elseif ($_GET["requete"] == "update" && isset($_GET['id_commentaire'])) {
+        $idComment = $_GET['id_commentaire'];
+        $nouveauContenu = $_GET['nouveau_contenu'];
+        $nouveauContenu = nl2br($nouveauContenu);
+
+
+        // Mettre à jour le billet dans la base de données
+        $requeteModifComment = "UPDATE commentaires SET contenu = :contenu WHERE id_commentaire = :id_commentaire";
+        $stmt = $db->prepare($requeteModifComment);
+        $stmt->execute(['id_commentaire' => $idComment, 'contenu' => $nouveauContenu]);
+
+        header("Location: billet.php?id_billet=" . $id_billet);
+        exit;
     }
 } else {
     header("Location: accueil.php");

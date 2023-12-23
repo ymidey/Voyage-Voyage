@@ -1,5 +1,10 @@
 <?php
 include("header.php");
+
+if (isset($_SERVER['HTTP_REFERER'])) {
+    // Récupère l'URL de la page précédente
+    $urlPagePrecedente = $_SERVER['HTTP_REFERER'];
+}
 ?>
 
 <div class="requete">
@@ -10,8 +15,12 @@ include("header.php");
         <input type="email" name="login" id="login" required>
 
         <label for="password">Votre mot de passe</label>
-        <input type="password" name="password" id="password" required>
+        <div>
+            <input type="password" name="password" id="password" required>
+            <span id="showPasswordButton1" class="showPasswordButton" style="cursor: pointer;">👁️</span>
+        </div>
 
+        <input type="hidden" name="urlPrecedente" value="<?php echo $urlPagePrecedente ?>">
         <button type="submit">Se connecter</button>
         <?php
         if (isset($_GET['erreur'])) {
@@ -24,3 +33,5 @@ include("header.php");
     <a href="register.php">Je souhaite m'inscrire</a>
     <a href="accueil.php">Accéder au blog sans se connecter</a>
 </div>
+
+<?php include("footer.php") ?>
