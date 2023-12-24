@@ -17,6 +17,10 @@ if ($_SESSION['admin'] == 1) {
 
             <button type="submit">Publier le billet</button>
         </form>
+
+        <?php if (isset($_GET["erreur"]) && $_GET["erreur"] == "titreExiste") {
+            echo "<p style='color:red'>Le titre que vous avez donné à votre billet existe déjà<, veuillez en choisir un autre/p>";
+        } ?>
     </div>
 <?php } else {
     header("Location: accueil.php");

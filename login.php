@@ -24,7 +24,6 @@ if (isset($_SERVER['HTTP_REFERER'])) {
         <button type="submit">Se connecter</button>
         <?php
         if (isset($_GET['erreur'])) {
-            $err = $_GET['erreur'];
 
             echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
         }

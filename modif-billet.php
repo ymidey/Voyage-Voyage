@@ -4,12 +4,7 @@ include("header.php");
 if (isset($_GET['idBillet']) && $_SESSION['admin'] == 1) {
     $idBillet = $_GET['idBillet'];
 
-    // Récupérer les données du billet à modifier
-    $requeteBillet = "SELECT * FROM billets WHERE id_billet = :id_billet";
-    $stmt = $db->prepare($requeteBillet);
-    $stmt->execute(['id_billet' => $idBillet]);
-    $billet = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    $billet = getBillet($idBillet);
     if ($billet) {
 ?>
         <div class="requete">

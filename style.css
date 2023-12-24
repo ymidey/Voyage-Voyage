@@ -331,3 +331,15 @@ form button:hover {
     margin: 0;
     width: 40%;
 }
+
+@media screen and (max-width: 1020px) {
+    .nav-header .nav-right {
+        display: none;
+    }
+
+    .nav-header {
+        padding: 15px 15px;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -28,11 +28,11 @@ include("header.php");
         <?php
         if (isset($_GET['erreur'])) {
 
-            if (isset($_GET['erreur']) == "mdp") {
+            if ($_GET['erreur'] == "mdp") {
                 $err = $_GET['erreur'];
 
                 echo "<p style='color:red'>Les mots de passe que vous rentrés ne correspondent pas l'un à l'autre</p>";
-            } elseif (isset($_GET['erreur']) == "pseudoExiste") {
+            } elseif ($_GET['erreur'] == "pseudoExiste") {
                 $err = $_GET['erreur'];
 
                 echo "<p style='color:red'>Le pseudo que vous avez choisi existe déjà</p>";

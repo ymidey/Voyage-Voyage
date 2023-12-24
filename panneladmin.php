@@ -3,14 +3,10 @@
 
     if ($_SESSION['admin'] == 1) {
 
+        $resultShowUtilisateurs = getAllUsers();
 
-        $requeteShowUtillisateurs = "SELECT * FROM utilisateurs";
-        $stmt = $db->query($requeteShowUtillisateurs);
-        $resultShowUtilisateurs = $stmt->fetchall(PDO::FETCH_ASSOC);
-
-        $requeteShowAllComments = "SELECT commentaires.*, utilisateurs.pseudo, billets.titre, billets.id_billet FROM commentaires, utilisateurs, billets WHERE commentaires.id_user = utilisateurs.id && billets.id_billet = commentaires.id_Billets ORDER BY commentaires.date_publication DESC";
-        $stmt = $db->query($requeteShowAllComments);
-        $resultShowAllComments = $stmt->fetchall(PDO::FETCH_ASSOC);    ?>
+        $resultShowAllComments = getAllComments();
+    ?>
 
      <div class="header">
          <h1 class="titre">🧰 Pannel admin 🧰</h1>

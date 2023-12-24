@@ -1,9 +1,7 @@
  <?php
     include("header.php");
 
-    $requeteBillet = "SELECT * FROM billets, utilisateurs WHERE billets.id_user = utilisateurs.id ORDER BY billets.id_billet DESC";
-    $stmt = $db->query($requeteBillet);
-    $resultRequetBillet = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $resultRequetBillet = getAllBillets();
 
     ?>
 

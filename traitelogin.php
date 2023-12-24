@@ -4,16 +4,17 @@ include("header.php");
 $login = $_GET["login"];
 $mdp = $_GET["password"];
 $url = $_GET["urlPrecedente"];
+// Vérifier si l'URL précédente contient "http://localhost/Blog_YannickMidey/register.php"
+if (strpos($url, "http://localhost/Blog_YannickMidey/register.php") !== false) {
+    $url = "accueil.php";
+}
 
-$requeteLogin = "SELECT * FROM utilisateurs WHERE login= :login";
-$prep = $db->prepare($requeteLogin);
-$prep->bindValue(':login', $login, PDO::PARAM_STR);
-$prep->execute();
+$users = getLogin($login);
 
-if ($prep->rowCount() == 1) {
-    $result = $prep->fetch(PDO::FETCH_ASSOC);
+if (count($users) == 1) {
+    $result = $users[0];
+
     if (password_verify($mdp, $result["mdp"])) {
-
         $_SESSION['login'] = $result["login"];
         $_SESSION['pseudo'] = $result["pseudo"];
         $_SESSION['id_user'] = $result["id"];

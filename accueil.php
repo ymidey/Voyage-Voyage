@@ -1,10 +1,6 @@
  <?php
     include("header.php");
-
-    $requeteBillet = "SELECT * FROM billets, utilisateurs WHERE billets.id_user = utilisateurs.id ORDER BY billets.id_billet DESC LIMIT 3";
-    $stmt = $db->query($requeteBillet);
-    $resultRequetBillet = $stmt->fetchall(PDO::FETCH_ASSOC);
-
+    $resultRequetBillet = getDerniersBillets(3);
     ?>
 
  <div class="header">

@@ -1,6 +1,6 @@
 <?php
 // On fait appel à notre fichier connexion.php afin de se connecter à la bdd
-include('connectdb.php');
+include('./inc/reqBDD.php');
 header("Access-Control-Allow-Origin: *");
 // On récupère la session
 session_start(); ?>
