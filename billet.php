@@ -13,29 +13,37 @@ $resultCountComment = getCountComment($idBillet);
             <path d=" M24 12.001H2.914l5.294-5.295-.707-.707L1 12.501l6.5 6.5.707-.707-5.293-5.293H24v-1z"></path>
         </svg>Retour à la page d'accueil</a>
     <?php if ($resultBilletComments) { ?>
-    <?php if ($resultBilletComments) { ?>
-    <article class="billet">
-        <div class="billet-header">
-            <h1><?php echo $resultBilletComments[0]["titre"]; ?></h1>
+        <?php if ($resultBilletComments) { ?>
+            <article class="billet">
+                <div class="billet-header">
+                    <h1><?php echo $resultBilletComments[0]["titre"]; ?></h1>
 
-            <?php
+                    <?php
                     $dateObj = new DateTime($resultBilletComments[0]["date"]);
                     $formattedDate = $dateObj->format('d M, Y');
                     ?>
 
-            <h2>Publié le <?php echo $formattedDate; ?> par <?php echo $resultBilletComments[0]["auteur"]; ?></h2>
-        </div>
+                    <h2>Publié le <?php echo $formattedDate; ?> par <?php echo $resultBilletComments[0]["auteur"]; ?></h2>
+                    <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) { ?>
+                        </a>
+                        <div class="billet-admin">
+                            <a href="traitebillet.php?requete=delete&idBillet=<?php echo $resultBilletComments[0]["id_billet"] ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce billet?')">Supprimer le billet</a>
+                            <a href="modif-billet.php?idBillet=<?php echo $resultBilletComments[0]["id_billet"] ?>">Modifier le
+                                billet</a>
+                        </div>
+                    <?php }; ?>
+                </div>
 
-        <div class="billet-content">
-            <p><?php echo $resultBilletComments[0]["contenu"]; ?></p>
-        </div>
-    </article>
-    <?php } else { ?>
-    <p>Aucun résultat trouvé.</p>
-    <?php } ?>
-    <button id="showComment">Voir les commentaires</button>
-    <div id="commentaire">
-        <?php
+                <div class="billet-content">
+                    <p><?php echo $resultBilletComments[0]["contenu"]; ?></p>
+                </div>
+            </article>
+        <?php } else { ?>
+            <p>Aucun résultat trouvé.</p>
+        <?php } ?>
+        <button id="showComment">Voir les commentaires</button>
+        <div id="commentaire">
+            <?php
             echo "<p>" . $resultCountComment[0]["nombre_commentaires"] . " Commentaire(s) : </p>";
 
             if ($resultBilletComments[0]["commentaire_contenu"]) {
@@ -101,21 +109,21 @@ $resultCountComment = getCountComment($idBillet);
 
 
 
-        <?php if (isset($_SESSION["id_user"])) { ?>
-        <form action="traite-com.php" method="get" class="requete form-com">
-            <label for="com">Ajoutez un nouveau commentaire : </label>
-            <textarea name="com" id="com" required></textarea>
-            <input type="hidden" name="id_billet" value="<?php echo $idBillet; ?>">
-            <input type="hidden" name="requete" id="requete" value="insert">
-            <button type="submit" id="btn_post_com">Postez</button>
-        </form>
-        <?php } else {
+            <?php if (isset($_SESSION["id_user"])) { ?>
+                <form action="traite-com.php" method="get" class="requete form-com">
+                    <label for="com">Ajoutez un nouveau commentaire : </label>
+                    <textarea name="com" id="com" required></textarea>
+                    <input type="hidden" name="id_billet" value="<?php echo $idBillet; ?>">
+                    <input type="hidden" name="requete" id="requete" value="insert">
+                    <button type="submit" id="btn_post_com">Postez</button>
+                </form>
+            <?php } else {
                 echo "<br><div><p>Pour pouvoir ajouter un commentaire, vous devez être connecter</p><a href='login.php'>Me connecter</a></div>";
             } ?>
-    </div>
+        </div>
 
     <?php  } else { ?>
-    <p>Aucun résultat trouvé.</p>
+        <p>Aucun résultat trouvé.</p>
     <?php } ?>
 </div>
 

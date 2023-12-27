@@ -1,5 +1,6 @@
 <?php
 include("header.php");
+$url = $_GET["urlPrecedente"];
 
 if (
     isset($_GET["requete"])
@@ -28,7 +29,7 @@ if (
     } elseif ($_GET["requete"] == "delete" && isset($_GET['idBillet']) && isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         $id_billet = $_GET['idBillet'];
         deleteBillet($id_billet);
-        header("Location: accueil.php?validation=delete");
+        header("location: accueil.php");
     } elseif ($_GET["requete"] == "update" && isset($_GET['idBillet'])) {
         $id_billet = $_GET['idBillet'];
         $nouveauTitre = $_GET['titre'];
@@ -37,7 +38,7 @@ if (
 
         updateBillet($id_billet, $nouveauTitre, $nouveauContenu);
 
-        header("Location: accueil.php");
+        header("location: " . $url);
     }
 } else {
     header("Location: accueil.php");
