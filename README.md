@@ -12,12 +12,12 @@ Le blog est hebergé sur o2Switch à l'adresse : https://blogphp.midey.butmmi.o2
 ## Fonctionnalité 
 
 Admin : 
-- Création d'un nouveau post
-- Modification d'un post
-- Suppression d'un post
-- Suppression d'un commentaire de n'importe quel utilisateur
-- Suppression d'un utilisateur
-- Accès à la page "Pannel admin" pour gérer les données du blog
+- Peut créer un nouveau post
+- Peut modifier le titre et le contenu d'un post existant
+- Peut supprimer un post existant
+- Peut supprimer un commentaire de n'importe quel utilisateur
+- Peut supprimer un utilisateur ainsi que toutes les données qui le concernes 
+- Peut accéder à la page "Pannel admin" pour gérer les données du blog
 
 Utilisateur connecté : 
 - Peut lire les différents posts
