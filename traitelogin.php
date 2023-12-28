@@ -4,8 +4,9 @@ include("header.php");
 $login = $_GET["login"];
 $mdp = $_GET["password"];
 $url = $_GET["urlPrecedente"];
-// Vérifier si l'URL précédente contient "http://localhost/Blog_YannickMidey/register.php"
+// On Vérifie si l'URL précédente contient "http://localhost/Blog_YannickMidey/register.php"
 if (strpos($url, "http://localhost/Blog_YannickMidey/register.php") !== false) {
+    // Si elle le contient, on change la veleur de $url
     $url = "accueil.php";
 }
 

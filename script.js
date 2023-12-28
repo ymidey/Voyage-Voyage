@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Ajouter un gestionnaire d'événement pour chaque bouton œil
+        // Ajout d'un gestionnaire d'événement pour chaque bouton œil
         document.querySelectorAll('.showPasswordButton').forEach(function (button) {
             button.addEventListener('click', function () {
-                // Extraire l'ID de l'élément de mot de passe associé
+
                 var passwordInputId = button.previousElementSibling.id;
                 togglePasswordVisibility(passwordInputId);
             });

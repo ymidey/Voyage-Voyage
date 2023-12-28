@@ -14,7 +14,6 @@ if ($mdp == $mdp2) {
     if (count($users) > 0) {
         header("location: register.php?erreur=pseudoExiste");
     } else {
-
         addUser($pseudo, $login, $mdp);
         header("location: login.php");
     }
